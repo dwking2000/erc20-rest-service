@@ -8,7 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -200,7 +205,10 @@ public class Controller {
             return Arrays.asList(privateFor.split(","));
         }
     }
-
+    
+    //https://projectlombok.org/features/constructor
+    @NoArgsConstructor(force = true)
+    @RequiredArgsConstructor
     @Data
     static class ContractSpecification {
         private final long initialAmount;
@@ -209,12 +217,16 @@ public class Controller {
         private final String tokenSymbol;
     }
 
+    @NoArgsConstructor(force = true)
+    @RequiredArgsConstructor
     @Data
     static class ApproveRequest {
         private final String spender;
         private final long value;
     }
 
+    @NoArgsConstructor(force = true)
+    @RequiredArgsConstructor
     @Data
     static class TransferFromRequest {
         private final String from;
@@ -222,12 +234,16 @@ public class Controller {
         private final long value;
     }
 
+    @NoArgsConstructor(force = true)
+    @RequiredArgsConstructor
     @Data
     static class TransferRequest {
         private final String to;
         private final long value;
     }
 
+    @NoArgsConstructor(force = true)
+    @RequiredArgsConstructor
     @Data
     static class ApproveAndCallRequest {
         private final String spender;
@@ -235,6 +251,8 @@ public class Controller {
         private final String extraData;
     }
 
+    @NoArgsConstructor(force = true)
+    @RequiredArgsConstructor
     @Data
     static class AllowanceRequest {
         private final String ownerAddress;
